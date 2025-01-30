@@ -1,3 +1,4 @@
+using CSharpToDo.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CSharpToDo.Controllers
@@ -9,7 +10,17 @@ namespace CSharpToDo.Controllers
         [HttpGet]
         public IActionResult GetTodos()
         {
-            return Ok("Sup!!");
+            var dummyTodos = new List<Todo> 
+            {
+                new () 
+                {
+                    Title = "A Todo",
+                    Description = "A Description",
+                    IsCompleted = false
+                }
+            };
+            
+            return Ok(dummyTodos);
         }
     }
 }

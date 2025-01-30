@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CSharpToDo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c29ef972762e33ba98f5925eac6735656a780eae")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b04d9705fd522a5fbaa0dbffd37bbc29d17f8c1e")]
 [assembly: System.Reflection.AssemblyProductAttribute("CSharpToDo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CSharpToDo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
