@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using CSharpToDo.Data;
 using CSharpToDo.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,18 +20,26 @@ namespace CSharpToDo.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetTodos()
+        public async Task<IActionResult> GetTodos()
         {
-            var dummyTodos = _dbContext.Todos.ToListAsync();
+            var dummyTodos = await _dbContext.Todos.ToListAsync();
 
             return Ok(dummyTodos);
         }
 
         [HttpPost]
-        public IActionResult CreateTodo([FromBody] Todo todo)
+        public async Task<IActionResult> CreateTodo([FromBody] Todo todo)
         {
-            _dbContext.Todos.Add(todo);
-            _dbContext.SaveChanges();
+            try
+            {
+                await _dbContext.Todos.AddAsync(todo);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating todo");
+                return BadRequest();
+            }
 
             return Ok(todo);
         }
