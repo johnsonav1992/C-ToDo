@@ -43,5 +43,46 @@ namespace CSharpToDo.Controllers
 
             return Ok(todo);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateTodo([FromBody] Todo todo)
+        {
+            try
+            {
+                _dbContext.Todos.Update(todo);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating todo");
+                return BadRequest();
+            }
+
+            return Ok(todo);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTodo(int id)
+        {
+            var todo = await _dbContext.Todos.FindAsync(id);
+
+            if (todo == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                _dbContext.Todos.Remove(todo);
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error deleting todo");
+                return BadRequest();
+            }
+
+            return Ok();
+        }
     }
 }
