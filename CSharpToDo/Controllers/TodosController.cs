@@ -10,16 +10,16 @@ namespace CSharpToDo.Controllers
         [HttpGet]
         public IActionResult GetTodos()
         {
-            var dummyTodos = new List<Todo> 
+            var dummyTodos = new List<Todo>
             {
-                new () 
+                new ()
                 {
                     Title = "A Todo",
                     Description = "A Description",
                     IsCompleted = false
                 }
             };
-            
+
             return Ok(dummyTodos);
         }
     }
